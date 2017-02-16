@@ -1,0 +1,548 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>扬帆起航 再创辉煌</title>
+    <link rel="stylesheet" href="css/swiper-3.4.0.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font:14px/1.5  "微软雅黑";
+        }
+        body{
+            width: 7.5rem;
+        }
+        div{
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            -webkit-tap-highlight-color: transparent;
+            outline:none;
+            background: none;
+            text-decoration: none;
+        }
+        .wrap{
+            width: 100%;
+            height:37.65rem;
+            background-image:url("zzkg/zzkgh5bg.jpg") ;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        .placehold{
+            width: 100%;
+            height: 1px;
+            background-color: transparent;
+        }
+
+        .btn-five-wrap{
+            margin:22.83rem 0 0 0;
+            width: 100%;
+            height: 3.6rem;
+        }
+        .btn-share{
+            margin: .5rem auto 0;
+            width:3.5rem ;
+            height: .75rem;
+        }
+        .btn-five{
+            margin-bottom: .55rem ;
+            margin-left: 77.5%;
+            display: block;
+            width: .7rem;
+            height: .3rem;
+        }
+        .mask-btn-five{
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 22.6rem;
+            left: 50%;
+            margin-left: -2.97rem;
+            width: 5.94rem;
+            height: 4.26rem;
+
+            z-index: 10;
+        }
+        .mask-lock{
+            margin: 1rem auto 0;
+            display: block;
+            width: .95rem;
+            height: 1.33rem;
+
+        }
+        .mask-open{
+            margin: .5rem auto 0;
+            display: block;
+            width: 2.1rem;
+            height:.43rem;
+        }
+        .modal-backdrop{
+            background-color: rgba(0,0,0,0.5);
+            width:100%;
+            z-index:10000;
+            top: 0;
+            position: fixed;
+            height: 13.33rem;
+        }
+        .modal-dialog-lg{
+            margin: 4.13rem auto 0;
+            width: 4.5rem;
+            background-color: white;
+            border-radius: .2rem;
+        }
+        .modal-content{
+
+        }
+        .modal-header,.modal-body,.modal-confirm,.modal-cancel{
+            text-align: center;
+        }
+        .modal-title,.modal-confirm,.modal-cancel{
+            font-size: .3rem;
+        }
+        .modal-header{
+            padding-top: .3rem;
+            width: 100%;
+            height: .9rem;
+            text-align: center;
+        }
+        .modal-body{
+            padding:0 .35rem;
+            font-size: .22rem;
+            margin-bottom: .35rem;
+        }
+        .modal-footer{
+            height: .7rem;
+            border-top:1px solid #ababaa;
+        }
+        .modal-cancel, .modal-confirm{
+            padding-top: .1rem;
+            float: left;
+            width: 50%;
+            height: .7rem;
+        }
+        .modal-cancel{
+            border-right: 1px solid #ababaa;
+        }
+        .place{
+            background-color: transparent;
+            width: 100%;
+            height: 1px;
+        }
+
+        .loading-mask{
+            background-color: rgba(0,0,0,0.5);
+            width:100%;
+            z-index:100000;
+            top: 0;
+            position: fixed;
+            height: 13.33rem;
+        }
+        .loading-text{
+            margin-top: 5rem;
+            font-size: .4rem;
+            text-align: center;
+            color: white;
+        }
+        .swiper-wrap{
+            position: absolute;
+            top: 4.2rem;
+            left: 50%;
+            margin-left: -3.2rem;
+            width: 6.1rem;
+            height: 4.5rem;
+        }
+        .swiper-container{
+            width: 6.1rem;
+            height: 4.5rem;
+        }
+        .swiper-wrapper{
+            width: 6.1rem;
+            height: 4.5rem;
+        }
+        .swiper-slide{
+
+            text-align: center;
+            width: 6.1rem;
+            height: 4.5rem;
+            overflow: hidden;
+        }
+        .siwer-img{
+            width: 3.4rem;
+            height: 4.25rem;
+
+        }
+        .swiper-pagination-bullet-active{
+            background-color: rgba(216,13,33,.9) !important;
+        }
+        </style>
+</head>
+<body>
+    <input value='${uid!}' id="userIdHidden" type="hidden">
+    <div class="wrap">
+        <div class="placehold"></div>
+        <div class="btn-five-wrap">
+            <img class="btn-five" src="zzkg/btnyes.png">
+            <img class="btn-five" src="zzkg/btnyes.png">
+            <img class="btn-five" src="zzkg/btnyes.png">
+            <img class="btn-five" src="zzkg/btnyes.png">
+            <img class="btn-five" src="zzkg/btnyes.png">
+        </div>
+        <div class="mask-btn-five" id="maskBtnFive">
+            <img class="mask-lock" src="zzkg/lock.png" />
+            <img class="mask-open" src="zzkg/open.png" />
+        </div>
+        <div class="btn-share" id="btnShare"></div>
+        <div class="swiper-wrap">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img class="siwer-img" src="zzkg/1.png"/></div>
+                    <div class="swiper-slide"><img class="siwer-img" src="zzkg/2.png"/></div>
+                    <div class="swiper-slide"><img class="siwer-img" src="zzkg/3.png"/></div>
+                    <div class="swiper-slide"><img class="siwer-img" src="zzkg/4.png"/></div>
+                    <div class="swiper-slide"><img class="siwer-img" src="zzkg/5.png"/></div>
+                     <div class="swiper-slide"><img class="siwer-img" src="zzkg/6.jpg"/></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <!--弹窗-->
+    <div class="modal-backdrop" id="modal_lg" style="display: none">
+        <div class="place"></div>
+        <div class="modal-dialog-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal_title">温馨提示</h4>
+                </div>
+                <div class="modal-body" id="modal_body">内容</div>
+                <div class="modal-footer">
+                    <div class="modal-cancel" id="modal_cancel"></div>
+                    <div class="modal-confirm" id="modal_confirm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loading-mask" id="loading_mask" style="display: none">
+        <div class="loading-text">loading....</div>
+    </div>
+    <!--通过隐藏域获取后台的签名数据-->
+    <!--后台获取生成签名的时间戳-->
+    <input value='${timestamp!}' id="timestamp" type="hidden">
+    <!--后台获取生成签名的随机字符串-->
+    <input value=${noncestr!} id="noncestr" type="hidden">
+    <!--后台获取签名-->
+    <input value='${signature!}' id="signature" type="hidden">
+    <!--页面完-->
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/swiper-3.4.0.jquery.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    document.documentElement.style.fontSize = window.innerWidth/7.5 + 'px';
+    var userId =osType? getQueryString("uid"):$("#userIdHidden").val();
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 1500,//可选选项，自动滑动
+        slidesPerView: 1.5,
+        loopedSlides :5,
+        pagination : '.swiper-pagination',
+        loop:true
+    });  //页面轮播图
+
+    //各种方法的封装
+    //loading 加载请求时的loading
+    function loading(str) {
+        if(str=="show"){
+            $("#loading_mask").show();
+        }else{
+            $("#loading_mask").hide();
+        }
+    };
+
+    //获取url后面数据
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    };
+
+    // 从URL判断是不是app传来的参数
+    var osType = getQueryString("osType");
+
+    // 从URL查看是不是app传来的参数
+    if(userId==''|| userId==0||userId==null||userId==undefined){
+        userId=null;
+    };
+
+    //如果没有userId 就去登录
+    if(userId==null){
+        _modal_lg('温馨提示',"很抱歉，您尚未登录",'取消','去登录',toLogin);
+    };
+
+    //调用原生底层app页面
+    function PassValue(e){
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+        var isIos = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        if (isAndroid){
+            Android.getGoodsInfoFromJs(e);
+        }else if(isIos){
+            passValue(e);
+        }
+    };
+
+    //去登陆
+    function toLogin() {
+        if(osType){
+            PassValue("LG")
+        }else {
+            window.location.href="/wx/open/login.html";//跳转到登录页
+        }
+    };
+
+    //跳转去登录的位置
+    function toThePlace() {
+        var btnShareOffet = $("#btnShare").offset();
+        $('html,body').animate({scrollTop: btnShareOffet.top+"px"}, 500);
+        $('#modal_lg').hide();
+    };
+
+    //看是否已经分享,如果没有分享，就提示去分享
+    $("#maskBtnFive").click(function () {
+        if(userId==null){
+            _modal_lg('温馨提示',"很抱歉，您尚未登录",'取消','去登录',toLogin);
+            return;
+        }
+        _modal_lg('温馨提示',"请完成'庆祝完成增资扩股工商变更'分享任务才能领取噢",'取消','去分享',toThePlace);
+    });
+
+    //去分享
+    function toShare() {
+        loading('show');
+        if(osType){
+            PassValue("1");
+            shareAjax();
+        }else {
+            loading('hide');
+            _modal_lg('温馨提示',"请点击右上角分享到微信好友或朋友圈才能领取奖励噢",'取消','去分享',hideTheModal);
+        }
+    };
+
+    //调用分享
+    $("#btnShare").click(function () {
+        if(userId==null){
+            _modal_lg('温馨提示',"很抱歉，您尚未登录",'取消','去登录',toLogin);
+            return;
+        }
+        toShare()
+    });
+
+    //微信分享配置
+    wx.config({
+        debug: false,
+        appId: 'wx0910539ee8f2dec1',
+        timestamp: $("#timestamp").val(),
+        nonceStr: $("#noncestr").val(),//noncestr
+        signature: $("#signature").val(),//signature
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ']
+    });
+
+    //微信分享显示内容配置
+    wx.ready(function(){
+        var desc=  "第三方资金托管、千万风险备付金、上市公司背景、A轮近2千万美金融资，收益是余额宝8倍！";
+        var obj = {
+            title:"我在用E都市钱包理财，安全有保障，注册并投资还送现金红包！",
+            link: "https://www.edspay.com/wx/open/welcome.html",
+            desc: desc,
+            imgUrl :'http://mystatic.edspay.com/web/webapp/images/edslogo.png',
+            success: function () {
+                shareAjax();
+            },
+            cancel: function () {
+
+            }
+        };
+        wx.onMenuShareTimeline(obj);
+        wx.onMenuShareQQ(obj);
+        wx.onMenuShareAppMessage(obj);
+    });
+
+    //微信分享错误信息
+    wx.error(function (res) {
+        console.log(res.errMsg);
+    });
+
+    //领取奖励
+    function couponWords(indexs) {
+        console.log("你点击的是"+indexs);
+        function _if() {
+            if(_loadingData.allCoupons[indexs].status == 0 &&_loadingData.allCoupons[indexs].isGet == 0&&_loadingData.allCoupons[indexs].isCanGet == 1){
+                couponStatus(indexs,1);
+            }else if ( _loadingData.allCoupons[indexs].status == 0 &&_loadingData.allCoupons[indexs].isGet == 1) {
+
+                couponStatus(indexs,1);
+                _modal_lg('温馨提示', " 您已成功领取该劵，请去投资使用开启更多奖券", '取消', '去投资', toUse);
+            } else if ( _loadingData.allCoupons[indexs].status == 1 && _loadingData.allCoupons[indexs].isGet == 1) {
+
+                _modal_lg('温馨提示', "您已成功领取该劵，请去投资使用开启更多奖券", '取消', '去投资', toUse);
+            } else if ( _loadingData.allCoupons[indexs].status == 0 && _loadingData.allCoupons[indexs].isGet == 0) {
+                _modal_lg('温馨提示', "请按照活动规则投资后领取奖励！", '取消', '确定', hideTheModal);
+            }else if(_loadingData.allCoupons[indexs].isCanGet==1){
+                couponStatus(indexs,1);
+                btnAjax();
+                _modal_lg('温馨提示', "您已成功领取该劵，请去投资使用开启更多奖券", '取消', '去投资', toUse);
+            }
+        }
+        if(_loadingData.allCoupons[indexs].isCanGet==0) {
+            _if()
+        }else if(_loadingData.resCode==1){
+            _if();
+            if(_loadingData.allCoupons[indexs].isCanGet==1){
+                couponStatus(indexs,1);
+                btnAjax();
+                _modal_lg('温馨提示', "恭喜您已经成功领取该劵，请去投资使用吧", '取消', '去使用', toUse);
+            }
+        }
+    };
+
+    //点击领券
+    !function receiveCoupons(){
+        $('.btn-five').click(function () {
+            var j =$(this).index();
+            console.log("ruleIDs");
+            console.log(ruleIDs);
+            console.log(ruleIDs[j]);
+            var _thisIndex =$(this).index();
+            console.log("the "+_thisIndex+" card");
+            couponWords(_thisIndex);
+        });
+    }();
+
+    //loading在领券请求成功以后消失
+    function btnAjax() {
+        loading('show');
+        $.ajax({
+            type: 'POST',
+            url: "/activity/giveRedEnvelope.html",
+            dataType:'json',
+            cache: false,
+            traditional: true,
+            data: {"activityId":441,"activityName":"庆工商变更,百万红包任性送","activityCode":"ZZKG","activityType":"B","userId":userId,ruleId : ruleIDs[j]},
+            beforeSend: function () {
+            },
+            success: function (data) {
+                loading('hide');
+            }
+        });
+    };
+
+    //去使用券
+    function toUse() {
+        if(osType){
+            PassValue("WIP")
+        }else {
+            window.location.href = "/wx/open/invest.html"
+        }
+    };
+
+    //大模态框  带确认和取消的弹框函数
+    function _modal_lg(_title,_body,cancel,confirm,fn) {
+//        title:头部内容；body：中间主体内容；cancel：取消的内容（默认是取消），confirm：确认（默认是确认）；fn：确认之后的回调函数；
+        var _modal_lg = document.getElementById("modal_lg");  //弹框的高度
+        var _modal_title = document.getElementById("modal_title");   //弹框的头部内容
+        var _modal_body = document.getElementById("modal_body");     //弹框的中间主体内容
+        var _modal_cancel =document.getElementById("modal_cancel");   //取消按钮
+        var _modal_confirm =document.getElementById("modal_confirm");    //确认按钮
+        _modal_lg.style.display="block";
+        if(document.body.clientHeight>= 1330){
+            _modal_lg.style.height = document.body.offsetHeight;
+        }else {
+            _modal_lg.style.height = 13.33+'rem';
+        }
+        _modal_title.innerHTML = _title;
+        _modal_body.innerHTML = _body;
+        _modal_cancel.innerHTML=_modal_cancel.innerHTML==""? "取消":cancel;
+        _modal_confirm.innerHTML = _modal_confirm.innerHTML==""? "确认": confirm;
+        _modal_cancel.onclick = function () {
+            _modal_lg.style.display="none";
+            loading('hide');
+        };
+        _modal_confirm.onclick =function () {
+            fn();
+        }
+    };
+
+    //关闭大模态框 弹框函数
+    function hideTheModal() {
+        var _modal_lg = document.getElementById("modal_lg");
+        _modal_lg.style.display="none";
+    };
+
+    //判断coupon状态的函数
+    function couponStatus(index,_isGet,_isCanGet) {
+        btn_fives = document.getElementsByClassName('btn-five');
+        if(_isCanGet==1&&_isGet==0){
+            $("#maskBtnFive").hide();
+        }else if(_isGet==1){
+            $("#maskBtnFive").hide();
+            btn_fives[index].src= "zzkg/btnno.png";//已领取过卷的背景图片
+        }
+    };
+
+    //loading ajax 刚进入的时候检查卷可用状态
+    !function loadingAjax() {
+        $.ajax({
+            type: 'POST',
+            url: "/activity/getLanternCouponsList.html",
+            dataType:'json',
+            cache: false,
+            traditional: true,
+            data: {"activityId":441,"activityName":"庆工商变更,百万红包任性送","activityCode":"ZZKG","activityType":"B","userId":userId},
+            beforeSend: function () {
+            },
+            success: function (data) {
+                //红包的id存入 ruleIDs 作为全局变量使用
+                _loadingData = data;
+                ruleIDs = new Array();
+                isGets=new Array();
+                isCanGets=new Array();
+                statuss=new Array();
+                for (var i = 0;i<data.allCoupons.length;i++){
+                    ruleIDs[i] = _loadingData.allCoupons[i].id;
+                    isGets[i] =_loadingData.allCoupons[i].isGet;
+                    isCanGets[i] =_loadingData.allCoupons[i].isCanGet;
+                    statuss[i] =_loadingData.allCoupons[i].status;
+                }
+                console.log("loading");
+                console.log(_loadingData);
+                for(var j = 0;j<data.allCoupons.length;j++){
+                    couponStatus(j,isGets[j],isCanGets[j]);
+                }
+            }
+        });
+    }();
+
+    function shareAjax() {
+        $.ajax({
+            type: 'POST',
+            url: "/activity/share/addShareLog.html",
+            dataType:'json',
+            cache: false,
+            traditional: true,
+            data: {"activityId":441,"activityName":"庆工商变更,百万红包任性送","activityType":"B","userId":userId},
+            beforeSend: function () {
+            },
+            success: function (data) {
+                loading('hide');
+                if(data.resCode==1){
+                    $("#maskBtnFive").hide();
+                    loadingAjax();
+                }
+            }
+        });
+    };
+
+</script>
+</body>
+</html>
