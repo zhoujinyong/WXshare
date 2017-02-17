@@ -263,7 +263,7 @@
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
+        if (r != null) return decodeURI(r[2]);
         return null;
     };
 
@@ -407,7 +407,7 @@
     };
 
     //点击领券
-    !function receiveCoupons(){
+    function receiveCoupons(){
         $('.btn-five').click(function () {
             var j =$(this).index();
             console.log("ruleIDs");
@@ -417,7 +417,8 @@
             console.log("the "+_thisIndex+" card");
             couponWords(_thisIndex);
         });
-    }();
+    };
+    receiveCoupons();
 
     //loading在领券请求成功以后消失
     function btnAjax() {
